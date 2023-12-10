@@ -33,7 +33,7 @@ public class SalesController {
         model.addAttribute("sales", salesmanList);
 
         Salesman sales = new Salesman();//needed for saveSale method
-        sales.setDot(LocalDate.now()); // so that t
+        sales.setDot(LocalDate.now()); // so that todays date is populated
         model.addAttribute("sale", sales);
 
         List<AggregatedSales> aggregatedSalesList = salesService.getAggregatedSales(salesmanList);
@@ -49,7 +49,7 @@ public class SalesController {
         return "redirect:/";
     }
 
-    // edit -get
+    // edit record -get endpoint
     @GetMapping("/sales/edit/{id}")
     public String editSalesForm(@PathVariable Long id, Model model) {
         model.addAttribute("sale", this.salesService.getSaleById(id));

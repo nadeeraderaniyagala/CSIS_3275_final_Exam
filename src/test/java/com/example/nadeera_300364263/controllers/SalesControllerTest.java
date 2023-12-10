@@ -43,6 +43,7 @@ class SalesControllerTest {
     Salesman salesman;
     AggregatedSales aggregatedSales;
 
+    // set up test data before each test
     @BeforeEach
     void setUp() {
         salesman = new Salesman();

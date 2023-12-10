@@ -26,16 +26,15 @@ public class SalesService {
     }
 
     public Salesman getSaleById(Long id){
-
         Optional<Salesman> optionalSales = salesmanRepository.findById(id);
         return optionalSales.orElse(null);
-
     }
 
     public void deleteSaleById(Long id){
         salesmanRepository.deleteById(id);
     }
 
+    // this method supports the sales summary table
     public List<AggregatedSales> getAggregatedSales(List<Salesman> salesmanList) {
         List<AggregatedSales> aggregatedSales = new ArrayList<>();
 
@@ -64,7 +63,6 @@ public class SalesService {
                 }
             }
         }
-
 
         return aggregatedSales;
     }

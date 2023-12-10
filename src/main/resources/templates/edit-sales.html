@@ -15,7 +15,6 @@
             <form name='myForm' onsubmit="return validateForm()" th:object="${sale}"
                   method="post">
 
-
                 <div class="form-group">
                     <label for="tranId">Transaction Number</label>
                     <input class="form-control" type="number" id="tranId" name="tranId" th:field="*{id}" readonly>
@@ -68,11 +67,6 @@
             alert("Amount cannot 0");
             return false;
         }
-    }
-
-    function confirmDelete() {
-        var result = confirm("Are you sure you want to delete?");
-        return result;
     }
 
 </script>
