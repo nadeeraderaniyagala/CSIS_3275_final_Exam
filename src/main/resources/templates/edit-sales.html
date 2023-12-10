@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Final Exam</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+
+</head>
+
+<div>
+    <div class="row justify-content-center">
+        <div class="col-md-6 form-container">
+            <form name='myForm' onsubmit="return validateForm()" th:object="${sale}"
+                  method="post">
+
+
+                <div class="form-group">
+                    <label for="tranId">Transaction Number</label>
+                    <input class="form-control" type="number" id="tranId" name="tranId" th:field="*{id}" readonly>
+                </div>
+
+                <div class="form-group">
+                    <label>Transaction Date</label>
+                    <input type="date" id="dot" class="form-control"
+                           th:field="*{dot}">
+                </div>
+
+                <div class="form-group">
+                    <label>Salesman Name</label>
+                    <input class="form-control" name="name" th:field="*{name}">
+                </div>
+
+                <div class="form-group">
+                    <label for="amount">Sales Amount</label>
+                    <input class="form-control" type="number" id="amount" name="amount" th:field="*{amount}">
+                </div>
+
+                <div class="form-group">
+                    <label for="item">Item Type</label>
+                    <select class="form-control" id="item" name="item" th:field="*{item}">
+                        <option value="Washing Machine">Washing Machine</option>
+                        <option value="Refrigerator">Refrigerator</option>
+                        <option value="Music System">Music System</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn btn-primary" >Save</button>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+    function validateForm() {
+        let name = document.forms["myForm"]["name"].value;
+        if (name == "") {
+            alert("Name cannot be blank");
+            return false;
+        }
+
+        let amount = document.forms["myForm"]["amount"].value;
+        if (amount == "" || amount == '0') {
+            alert("Amount cannot 0");
+            return false;
+        }
+    }
+
+    function confirmDelete() {
+        var result = confirm("Are you sure you want to delete?");
+        return result;
+    }
+
+</script>
+
+</body>
+</html>
