@@ -11,7 +11,7 @@
 
 <body class="container">
 
-<div class="center">
+<div style="text-align: center;">
     <h1> Final Exam Set B</h1>
     <h1> Sales Summary Table </h1>
 </div>
@@ -35,38 +35,34 @@
 </table>
 
 <div>
-    <div class="row justify-content-center">
-        <div class="col-md-6 form-container">
-            <form name='myForm' th:action="@{/sales}"  onsubmit="return validateForm()" th:object="${sale}"
+    <div>
+        <div style="background-color: lightblue; padding: 20px; text-align: center; display: flex; align-items: center; justify-content: space-around;">
+            <form name='myForm' class="form-inline" th:action="@{/sales}" onsubmit="return validateForm()"
+                  th:object="${sale}"
                   method="post">
-                <div class="form-group">
-                    <label>Salesman Name</label>
-                    <input class="form-control" name="name" th:field="*{name}">
-                </div>
+                <label>Salesman Name</label>
+                <input class="form-control" name="name" th:field="*{name}">
 
-                <div class="form-group">
-                    <label for="item">Item Type</label>
-                    <select class="form-control" id="item" name="item" th:field="*{item}">
-                        <option value="Washing Machine">Washing Machine</option>
-                        <option value="Refrigerator">Refrigerator</option>
-                        <option value="Music System">Music System</option>
-                    </select>
-                </div>
+                <label for="item">Item Type</label>
+                <select class="form-control" id="item" name="item" th:field="*{item}">
+                    <option value="Washing Machine">Washing Machine</option>
+                    <option value="Refrigerator">Refrigerator</option>
+                    <option value="Music System">Music System</option>
+                </select>
 
-                <div class="form-group">
-                    <label for="amount">Sales Amount</label>
-                    <input class="form-control" type="number" id="amount" name="amount" th:field="*{amount}">
-                </div>
+                <label for="amount">Sales Amount</label>
+                <input class="form-control" type="number" id="amount" name="amount" th:field="*{amount}">
 
-                <div class="form-group">
-                    <label>Transaction Date</label>
-                    <input type="date" id="dot" class="form-control"
-                           th:field="*{dot}">
-                </div>
-                <button type="submit" class="btn btn-primary" >Save</button>
+                <label>Transaction Date</label>
+                <input type="date" id="dot" class="form-control"
+                       th:field="*{dot}">
+                </br>
+
+                <button type="submit" class="btn btn-primary">Save</button>
             </form>
+        </div>
 
-
+        <div>
             <table class="table table-bordered">
                 <thead class="thead-dark">
                 <tr>
@@ -84,17 +80,15 @@
                     <td th:text="${s.amount}"></td>
                     <td th:text="${s.dot}"></td>
 
-                    <td><a  th:href="@{/sales/{id}(id=${s.id})}" class="btn btn-danger">Delete</a></td>
-                    <td><a th:href="@{/sales/edit/{id}(id=${s.id})}" class="btn btn-success">Edit</a></td>
-
+                    <td><a th:href="@{/sales/{id}(id=${s.id})}" onclick="return confirmDelete();" class="btn btn-danger">Delete</a></td>
+                    <td><a th:href="@{/sales/edit/{id}(id=${s.id})}"  class="btn btn-success">Edit</a></td>
 
                 </tr>
             </table>
-
         </div>
     </div>
 </div>
-
+</div>
 
 
 <script>

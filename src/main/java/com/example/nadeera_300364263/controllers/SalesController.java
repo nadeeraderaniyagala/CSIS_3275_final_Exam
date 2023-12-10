@@ -20,6 +20,10 @@ import java.util.Objects;
 @Controller
 public class SalesController {
 
+//    This program runs on http://localhost:8080/
+//    Pushed to Github
+//    link : https://github.com/nadeeraderaniyagala/CSIS_3275_final_Exam
+
     @Autowired
     private SalesService salesService;
 
@@ -29,7 +33,7 @@ public class SalesController {
         model.addAttribute("sales", salesmanList);
 
         Salesman sales = new Salesman();//needed for saveSale method
-        sales.setDot(LocalDate.now());
+        sales.setDot(LocalDate.now()); // so that t
         model.addAttribute("sale", sales);
 
         List<AggregatedSales> aggregatedSalesList = salesService.getAggregatedSales(salesmanList);
